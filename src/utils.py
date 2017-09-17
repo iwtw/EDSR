@@ -46,7 +46,7 @@ def conv2d_transpose( inputs , outputs_dim , kernel_size , stride , padding = "S
     upper_bound = np.sqrt( 12.0 * var ) *0.5
     weights_initializer = tf.random_uniform_initializer( -upper_bound , upper_bound , seed = None , dtype = tf.float32 )
     weights_regularizer = layers.l2_regularizer( scale = regularization_scale )
-    return layers.conv2d_transpose( inputs , outputs_dim , kernel_size = kernel_size , stride = stride , padding = padding ,  weights_initializer = weights_initializer ,  activation_fn = activation_fn , name = name, weights_regularizer = weights_regularizer ):
+    return layers.conv2d_transpose( inputs , outputs_dim , kernel_size = kernel_size , stride = stride , padding = padding ,  weights_initializer = weights_initializer ,  activation_fn = activation_fn , name = name, weights_regularizer = weights_regularizer )
 
 
 def upsample( inputs , scale , dim    , upsample_method = "subpixel" ,  activation_fn = None , regularization_scale = 0.0 , name = None ):
@@ -72,14 +72,14 @@ def upsample( inputs , scale , dim    , upsample_method = "subpixel" ,  activati
                 outputs = act( outputs )
         elif upsample_method == "conv_transpose":
             if scale == 2 :
-                outputs = utils.conv2d_transpose( inputs , dim , 3 , 2 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale , name = "conv_transpose1"
+                outputs = utils.conv2d_transpose( inputs , dim , 3 , 2 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale , name = "conv_transpose1")
                 outputs = act( outputs )
             elif scale == 3:
-                outputs = utils.conv2d_transpose( inputs , dim , 3 , 3 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale , name = "conv_transpose1"
+                outputs = utils.conv2d_transpose( inputs , dim , 3 , 3 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale , name = "conv_transpose1")
                 outputs = act( outputs )
             elif scale == 4:
-                outputs = utils.conv2d_transpose( inputs , dim , 3 , 2 , regularization_scale = regularization_scale , name = "conv_transpose1"
-                outputs = utils.conv2d_transpose( outputs , dim , 3 , 2 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale , name = "conv_transpose2"
+                outputs = utils.conv2d_transpose( inputs , dim , 3 , 2 , regularization_scale = regularization_scale , name = "conv_transpose1")
+                outputs = utils.conv2d_transpose( outputs , dim , 3 , 2 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale , name = "conv_transpose2")
                 outputs = act( outputs )
                 
     return outputs
