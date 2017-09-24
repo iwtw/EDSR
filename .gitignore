@@ -1,1 +1,4 @@
 __pycache__/
+log/
+model/
+training_output/

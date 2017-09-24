@@ -1,0 +1,873 @@
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+2017-09-18 23:29:22.790903: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-18 23:29:22.790979: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-18 23:29:22.790995: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-18 23:29:26.633680: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-18 23:29:27.116882: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x51aef10 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-18 23:29:27.118802: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-18 23:29:27.605828: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x51b2d40 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-18 23:29:27.607824: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 2 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.582
+pciBusID 0000:83:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-18 23:29:28.108294: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x51d75f0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-18 23:29:28.110193: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 3 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:84:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-18 23:29:28.112118: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 2
+2017-09-18 23:29:28.112167: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 3
+2017-09-18 23:29:28.112224: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 2
+2017-09-18 23:29:28.112256: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 3
+2017-09-18 23:29:28.112286: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 0
+2017-09-18 23:29:28.112315: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 1
+2017-09-18 23:29:28.113743: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 0
+2017-09-18 23:29:28.113786: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 1
+2017-09-18 23:29:28.113931: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 2 3 
+2017-09-18 23:29:28.113973: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y N N 
+2017-09-18 23:29:28.113988: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y N N 
+2017-09-18 23:29:28.114000: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 2:   N N Y Y 
+2017-09-18 23:29:28.114012: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 3:   N N Y Y 
+2017-09-18 23:29:28.114175: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-18 23:29:28.114271: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-09-18 23:29:28.114289: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0)
+2017-09-18 23:29:28.114303: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0)
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+2017-09-19 00:26:13.569400: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 00:26:13.569480: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 00:26:13.569496: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 00:26:17.400846: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 00:26:17.878483: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x71c0ef0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 00:26:17.880426: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 00:26:18.367558: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x71c4d20 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 00:26:18.369468: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 2 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.582
+pciBusID 0000:83:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 00:26:18.869764: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x71e95d0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 00:26:18.871684: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 3 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:84:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 00:26:18.873619: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 2
+2017-09-19 00:26:18.873665: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 3
+2017-09-19 00:26:18.873721: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 2
+2017-09-19 00:26:18.873752: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 3
+2017-09-19 00:26:18.873781: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 0
+2017-09-19 00:26:18.873809: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 1
+2017-09-19 00:26:18.875255: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 0
+2017-09-19 00:26:18.875298: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 1
+2017-09-19 00:26:18.875439: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 2 3 
+2017-09-19 00:26:18.875463: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y N N 
+2017-09-19 00:26:18.875475: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y N N 
+2017-09-19 00:26:18.875488: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 2:   N N Y Y 
+2017-09-19 00:26:18.875500: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 3:   N N Y Y 
+2017-09-19 00:26:18.875524: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-19 00:26:18.875540: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-09-19 00:26:18.875554: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0)
+2017-09-19 00:26:18.875567: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0)
+step:0
+step:1
+step:2
+step:3
+step:4
+step:5
+step:6
+step:7
+step:8
+step:9
+step:9999
+step:19999
+step:29999
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+2017-09-19 17:32:08.869121: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 17:32:08.869189: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 17:32:08.869205: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 17:32:12.672349: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:32:13.153450: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x57b97a0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 17:32:13.155381: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:32:13.603250: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x57bd5d0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 17:32:13.605119: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 2 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.582
+pciBusID 0000:83:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:32:14.080299: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x57e1e80 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 17:32:14.082150: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 3 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:84:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:32:14.084046: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 2
+2017-09-19 17:32:14.084093: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 3
+2017-09-19 17:32:14.084148: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 2
+2017-09-19 17:32:14.084178: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 3
+2017-09-19 17:32:14.084206: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 0
+2017-09-19 17:32:14.084234: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 1
+2017-09-19 17:32:14.085672: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 0
+2017-09-19 17:32:14.085714: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 1
+2017-09-19 17:32:14.085853: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 2 3 
+2017-09-19 17:32:14.085874: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y N N 
+2017-09-19 17:32:14.085887: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y N N 
+2017-09-19 17:32:14.085899: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 2:   N N Y Y 
+2017-09-19 17:32:14.085912: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 3:   N N Y Y 
+2017-09-19 17:32:14.085935: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-19 17:32:14.085951: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-09-19 17:32:14.085966: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0)
+2017-09-19 17:32:14.085979: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0)
+step:0
+step:1
+step:2
+step:3
+step:4
+step:5
+step:6
+step:7
+step:8
+step:9
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+2017-09-19 17:49:25.241490: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 17:49:25.241562: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 17:49:25.241578: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 17:49:29.085670: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:49:29.562901: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x635f270 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 17:49:29.564723: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:49:30.049236: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x63630a0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 17:49:30.051227: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 2 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.582
+pciBusID 0000:83:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:49:30.550093: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x6366ed0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 17:49:30.551982: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 3 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:84:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:49:30.553949: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 2
+2017-09-19 17:49:30.553996: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 3
+2017-09-19 17:49:30.554052: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 2
+2017-09-19 17:49:30.554082: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 3
+2017-09-19 17:49:30.554112: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 0
+2017-09-19 17:49:30.554141: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 1
+2017-09-19 17:49:30.555644: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 0
+2017-09-19 17:49:30.555689: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 1
+2017-09-19 17:49:30.555829: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 2 3 
+2017-09-19 17:49:30.555851: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y N N 
+2017-09-19 17:49:30.555880: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y N N 
+2017-09-19 17:49:30.555894: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 2:   N N Y Y 
+2017-09-19 17:49:30.555905: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 3:   N N Y Y 
+2017-09-19 17:49:30.555929: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-19 17:49:30.555944: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-09-19 17:49:30.555958: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0)
+2017-09-19 17:49:30.555971: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0)
+2017-09-19 17:49:32.285170: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.285271: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.286249: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.286483: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.286649: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.286855: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.287094: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.287267: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.287508: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.287632: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.287873: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.288067: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.288310: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.288486: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.288676: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.288783: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.289014: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.289167: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.289289: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.289437: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.289607: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.289808: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.289937: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.290062: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.290251: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.290398: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.290502: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.290712: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.290865: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.291085: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.291309: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.291559: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.291765: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.291965: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.292064: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.292203: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.292331: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.292566: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.292653: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.292842: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.292969: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.293158: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.293323: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.293439: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.293613: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.293762: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.293932: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.294125: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.294296: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.294405: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.294498: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.294630: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.294799: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.294954: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.295123: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.295270: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.295383: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.295632: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.295675: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.295832: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.295940: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.296068: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.296182: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.296356: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.296466: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.296618: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.296788: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.296888: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.297089: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.297236: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.297448: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.297531: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.297721: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.297852: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.297955: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.298082: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.298255: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.298432: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.298619: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.298844: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.299024: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.299187: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.299410: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.299574: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.299716: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.299784: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.299918: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.300102: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.300309: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.300417: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.300563: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.300708: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.300854: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.300959: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.301066: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.301224: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.301375: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.301510: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.301636: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.301843: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.301923: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.302113: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.302207: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.302315: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.302440: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.302630: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.302809: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.302983: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.303131: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.303260: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.303381: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.303483: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.303717: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.303798: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.303917: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.304115: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.304262: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.304377: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.304527: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.304662: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.304768: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.304905: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.305117: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.305207: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.305349: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.305505: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.305660: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.305794: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.305925: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.306062: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.306270: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.306436: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.306547: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.306606: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.306720: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.306853: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.307117: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.307226: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.307354: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.307574: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.307682: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.307819: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.307992: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.308109: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.308293: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.308460: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.308606: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.308787: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.308920: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.309087: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.309210: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.309373: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.309428: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.309627: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.309755: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.309860: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.309992: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.310187: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.310322: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.310427: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.310557: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.310707: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.310845: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.311068: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.311185: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.311329: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.311496: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.311543: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.311709: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.311853: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.311996: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.312142: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.312292: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.312429: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.312546: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.312762: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.312821: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.313052: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.313152: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.313321: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.313445: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.313617: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.313729: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.313853: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.314005: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.314120: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.314334: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.314461: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.314669: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.314719: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.315008: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.315165: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.315272: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.315434: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.315560: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.315640: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.315938: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.316066: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.316214: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.316337: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.316508: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.316691: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.316818: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.317007: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.317125: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.317296: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.317448: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.317560: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.317695: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.317863: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.317903: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.318134: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.318249: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.318436: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.318683: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.318715: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.318898: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.319056: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.319184: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.319328: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.319512: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.319673: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.319749: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.319926: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.320020: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.320159: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.320281: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.320452: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.320590: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.320804: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.320918: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.321187: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.321487: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.321540: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.321771: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.321905: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.322088: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.322278: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.322467: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.322701: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.322794: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.323012: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.323113: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.323300: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.323477: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.323635: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.323743: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.323837: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.323975: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.324119: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.324256: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.324425: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.324557: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.324658: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.324754: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.324959: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.325086: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.325250: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.325393: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.325584: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.325683: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.325894: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.326007: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.326183: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.326323: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.326578: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.326639: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.326741: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.326902: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.327044: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.327147: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.327297: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.327545: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.327643: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.327756: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.327867: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.328045: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.328163: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.328305: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.328486: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.328683: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.328792: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.329009: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.329131: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.329310: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.329427: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.329575: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.329757: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.329972: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.330074: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.330196: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.330408: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.330537: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.330651: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.330795: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.331022: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.331143: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.331182: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.331334: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.331461: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.331625: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.331748: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.331884: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.331995: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.332124: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.332325: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.332402: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.332529: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.332728: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.332894: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.333057: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.333218: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.333427: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.333619: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.333714: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.333939: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.334075: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.334178: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.334285: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.334413: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.334571: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.334772: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.334948: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.335131: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.335267: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.335360: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.335475: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.335652: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.335897: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.335993: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.336260: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.336406: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.336525: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.336621: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.336802: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.336913: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.337024: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.337139: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.337270: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.337375: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.337502: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.337660: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.337734: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.337863: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.337982: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.338082: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.338230: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.338453: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.338572: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.338855: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.338933: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.339135: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.339216: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.339334: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.339411: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.339591: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.339732: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.339942: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.340088: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.340240: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.340415: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.340563: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.340706: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.340853: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.340980: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.341125: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.341343: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.341513: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.341615: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.341776: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.341901: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.342007: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.342143: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.342280: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.342414: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.342536: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.342712: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.342756: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.343002: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.343169: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.343312: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.343422: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.343536: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.343696: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.343884: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.343981: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.344152: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.344311: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.344526: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.344673: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.344852: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.344983: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.345071: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.345183: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.345364: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.345473: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.345657: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.345893: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.346071: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.346239: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.346408: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.346530: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.346720: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.346892: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.347140: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.347274: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.347385: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.347537: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.347690: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.347878: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.348004: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.348153: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.348340: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.348529: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.348731: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.348916: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+2017-09-19 17:49:32.349135: W tensorflow/core/framework/op_kernel.cc:1192] Not found: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+Traceback (most recent call last):
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1327, in _do_call
+    return fn(*args)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1306, in _run_fn
+    status, run_metadata)
+  File "/home/hzl/anaconda3/lib/python3.6/contextlib.py", line 88, in __exit__
+    next(self.gen)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 466, in raise_exception_on_not_ok_status
+    pywrap_tensorflow.TF_GetCode(status))
+tensorflow.python.framework.errors_impl.NotFoundError: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+	 [[Node: save/RestoreV2 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_arg_save/Const_0_0, save/RestoreV2/tensor_names, save/RestoreV2/shape_and_slices)]]
+	 [[Node: save/RestoreV2_31/_371 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/gpu:0", send_device="/job:localhost/replica:0/task:0/cpu:0", send_device_incarnation=1, tensor_name="edge_1208_save/RestoreV2_31", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/gpu:0"]()]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "train.py", line 125, in <module>
+    tf.app.run(main)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "train.py", line 122, in main
+    train( args , loss , I_HR , I_LR , I_SR )
+  File "train.py", line 77, in train
+    saver.restore( sess , args.model_dir + "model" )
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1560, in restore
+    {self.saver_def.filename_tensor_name: save_path})
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 895, in run
+    run_metadata_ptr)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1124, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1321, in _do_run
+    options, run_metadata)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1340, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.NotFoundError: Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+	 [[Node: save/RestoreV2 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_arg_save/Const_0_0, save/RestoreV2/tensor_names, save/RestoreV2/shape_and_slices)]]
+	 [[Node: save/RestoreV2_31/_371 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/gpu:0", send_device="/job:localhost/replica:0/task:0/cpu:0", send_device_incarnation=1, tensor_name="edge_1208_save/RestoreV2_31", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/gpu:0"]()]]
+
+Caused by op 'save/RestoreV2', defined at:
+  File "train.py", line 125, in <module>
+    tf.app.run(main)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "train.py", line 122, in main
+    train( args , loss , I_HR , I_LR , I_SR )
+  File "train.py", line 72, in train
+    saver = tf.train.Saver(var_list = tf.get_collection( tf.GraphKeys.GLOBAL_VARIABLES))
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1140, in __init__
+    self.build()
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 1172, in build
+    filename=self._filename)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 688, in build
+    restore_sequentially, reshape)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 407, in _AddRestoreOps
+    tensors = self.restore_op(filename_tensor, saveable, preferred_shard)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/saver.py", line 247, in restore_op
+    [spec.tensor.dtype])[0])
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/gen_io_ops.py", line 663, in restore_v2
+    dtypes=dtypes, name=name)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 767, in apply_op
+    op_def=op_def)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2630, in create_op
+    original_op=self._default_original_op, op_def=op_def)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1204, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+NotFoundError (see above for traceback): Unsuccessful TensorSliceReader constructor: Failed to find any matching files for ../model/edsr_dim256_subpixel_scale4model
+	 [[Node: save/RestoreV2 = RestoreV2[dtypes=[DT_FLOAT], _device="/job:localhost/replica:0/task:0/cpu:0"](_arg_save/Const_0_0, save/RestoreV2/tensor_names, save/RestoreV2/shape_and_slices)]]
+	 [[Node: save/RestoreV2_31/_371 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/gpu:0", send_device="/job:localhost/replica:0/task:0/cpu:0", send_device_incarnation=1, tensor_name="edge_1208_save/RestoreV2_31", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/gpu:0"]()]]
+
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+2017-09-19 17:54:45.097408: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 17:54:45.097477: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 17:54:45.097493: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2017-09-19 17:54:48.841542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:54:49.305568: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x7199a10 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 17:54:49.307372: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:54:49.746723: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x719d840 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 17:54:49.748716: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 2 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.582
+pciBusID 0000:83:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:54:50.212876: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x71c20f0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-19 17:54:50.214849: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 3 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:84:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-19 17:54:50.216880: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 2
+2017-09-19 17:54:50.216962: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 3
+2017-09-19 17:54:50.217029: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 2
+2017-09-19 17:54:50.217063: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 3
+2017-09-19 17:54:50.217093: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 0
+2017-09-19 17:54:50.217122: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 1
+2017-09-19 17:54:50.218585: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 0
+2017-09-19 17:54:50.218628: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 1
+2017-09-19 17:54:50.218781: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 2 3 
+2017-09-19 17:54:50.218805: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y N N 
+2017-09-19 17:54:50.218818: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y N N 
+2017-09-19 17:54:50.218830: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 2:   N N Y Y 
+2017-09-19 17:54:50.218843: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 3:   N N Y Y 
+2017-09-19 17:54:50.218865: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-19 17:54:50.218901: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-09-19 17:54:50.218916: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0)
+2017-09-19 17:54:50.218929: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0)
+step:9
+step:9999
+step:19999
+step:29999
+step:39999
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+Traceback (most recent call last):
+  File "train.py", line 130, in <module>
+    tf.app.run(main)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "train.py", line 127, in main
+    train( args , loss , I_HR , I_LR , I_SR )
+  File "train.py", line 76, in train
+    config.gpus_options.allow_growth = True
+AttributeError: 'ConfigProto' object has no attribute 'gpus_options'
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+EDSR------------------------------------
+2017-09-21 16:57:04.934147: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-21 16:57:05.453747: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x6710740 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-21 16:57:05.455515: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-21 16:57:05.652863: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 
+2017-09-21 16:57:05.652932: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y 
+2017-09-21 16:57:05.652946: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y 
+2017-09-21 16:57:05.653074: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-21 16:57:05.653158: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-09-21 16:57:15.309684: E tensorflow/stream_executor/cuda/cuda_dnn.cc:364] Loaded runtime CuDNN library: 6021 (compatibility version 6000) but source was compiled with 5110 (compatibility version 5100).  If using a binary install, upgrade your CuDNN library to match.  If building from sources, make sure the library loaded at runtime matches a compatible version specified during compile configuration.
+2017-09-21 16:57:15.316073: F tensorflow/core/kernels/conv_ops.cc:672] Check failed: stream->parent()->GetConvolveAlgorithms( conv_parameters.ShouldIncludeWinogradNonfusedAlgo<T>(), &algorithms) 
+Traceback (most recent call last):
+  File "train.py", line 1, in <module>
+    import tensorflow as tf
+ModuleNotFoundError: No module named 'tensorflow'
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+2017-09-21 17:03:33.403541: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-21 17:03:33.852577: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x564f1a0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-21 17:03:33.854296: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-21 17:03:34.050541: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 
+2017-09-21 17:03:34.050575: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y 
+2017-09-21 17:03:34.050590: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y 
+2017-09-21 17:03:34.050622: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-21 17:03:34.050641: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-09-21 17:03:42.455096: E tensorflow/stream_executor/cuda/cuda_dnn.cc:364] Loaded runtime CuDNN library: 6021 (compatibility version 6000) but source was compiled with 5110 (compatibility version 5100).  If using a binary install, upgrade your CuDNN library to match.  If building from sources, make sure the library loaded at runtime matches a compatible version specified during compile configuration.
+2017-09-21 17:03:42.488857: F tensorflow/core/kernels/conv_ops.cc:672] Check failed: stream->parent()->GetConvolveAlgorithms( conv_parameters.ShouldIncludeWinogradNonfusedAlgo<T>(), &algorithms) 
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+2017-09-22 16:27:50.533360: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-22 16:27:50.962181: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x494d440 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-22 16:27:50.963970: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-22 16:27:51.160100: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 
+2017-09-22 16:27:51.160134: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y 
+2017-09-22 16:27:51.160148: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y 
+2017-09-22 16:27:51.160196: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-22 16:27:51.160217: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+step:39999
+step:49999
+step:59999
+step:69999
+step:79999
+step:89999
+step:99999
+step:109999
+step:119999
+step:129999
+step:139999
+step:149999
