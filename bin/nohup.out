@@ -914,3 +914,6 @@ Free memory: 10.76GiB
 2017-09-28 19:17:56.864844: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y 
 2017-09-28 19:17:56.864873: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
 2017-09-28 19:17:56.865489: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
