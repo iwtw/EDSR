@@ -871,3 +871,46 @@ step:119999
 step:129999
 step:139999
 step:149999
+step:159999
+step:169999
+step:179999
+step:189999
+step:199999
+step:209999
+step:219999
+step:229999
+step:239999
+step:249999
+step:259999
+step:269999
+step:279999
+step:289999
+step:299999
+step:309999
+step:319999
+step:329999
+step:339999
+step:349999
+step:359999
+step:369999
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+2017-09-28 19:17:56.363840: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-28 19:17:56.861153: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x49de6a0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-28 19:17:56.863095: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-28 19:17:56.864799: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 
+2017-09-28 19:17:56.864831: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y 
+2017-09-28 19:17:56.864844: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y 
+2017-09-28 19:17:56.864873: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-28 19:17:56.865489: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
