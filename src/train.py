@@ -95,6 +95,7 @@ def train( args , loss , I_HR , I_BI , I_SR ):
             if it() % args.log_step == args.log_step -1 or it() < 10 :
                 i_hr , i_bi , i_sr = sess.run( [I_HR , I_BI , I_SR ])
                 writer.add_summary( log , it() )
+                writer.flush()
                 saver.save( sess , args.model_dir+"/model" )
                 epoch = int ( it() / args.n_its_per_epoch ) + ( it() % args.n_its_per_epoch!=0)
                 save_images.save_images("../training_output/"+args.name,[i_hr,i_bi,i_sr],it() , epoch )

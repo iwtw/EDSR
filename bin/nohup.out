@@ -917,3 +917,42 @@ Free memory: 10.76GiB
 [(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
 EDSR------------------------------------
 EDSR------------------------------------
+2017-09-28 19:31:30.308945: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-28 19:31:30.775898: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x5ac5ec0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-28 19:31:30.777698: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-28 19:31:30.779358: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 
+2017-09-28 19:31:30.779390: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y 
+2017-09-28 19:31:30.779404: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y 
+2017-09-28 19:31:30.779433: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-28 19:31:30.779452: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+2017-09-28 21:09:27.607736: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-28 21:09:28.099831: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x6032ca0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-09-28 21:09:28.101664: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-09-28 21:09:28.103362: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 
+2017-09-28 21:09:28.103394: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y 
+2017-09-28 21:09:28.103408: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y 
+2017-09-28 21:09:28.103527: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-09-28 21:09:28.103631: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
