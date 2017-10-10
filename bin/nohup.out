@@ -956,3 +956,98 @@ Free memory: 10.76GiB
 2017-09-28 21:09:28.103408: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y 
 2017-09-28 21:09:28.103527: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
 2017-09-28 21:09:28.103631: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-10-02 18:42:09.445043: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 1.39GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2017-10-03 03:54:49.916884: W tensorflow/core/kernels/queue_base.cc:295] _2_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-10-03 03:54:49.917174: W tensorflow/core/kernels/queue_base.cc:295] _2_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-10-03 03:54:49.917297: W tensorflow/core/kernels/queue_base.cc:295] _0_input_producer: Skipping cancelled enqueue attempt with queue not closed
+2017-10-03 03:54:49.917577: W tensorflow/core/kernels/queue_base.cc:295] _2_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+2017-10-03 03:54:49.917615: W tensorflow/core/kernels/queue_base.cc:295] _2_data/random_shuffle_queue: Skipping cancelled enqueue attempt with queue not closed
+Traceback (most recent call last):
+  File "../src/train.py", line 132, in <module>
+ERROR:tensorflow:Exception in QueueRunner: Enqueue operation was cancelled
+	 [[Node: data/random_shuffle_queue_enqueue_2 = QueueEnqueueV2[Tcomponents=[DT_UINT8, DT_INT32], timeout_ms=-1, _device="/job:localhost/replica:0/task:0/cpu:0"](data/random_shuffle_queue, decode_image_2/cond_jpeg/Merge/_65, Cast_2/_67)]]
+    tf.app.run(main)
+ERROR:tensorflow:Exception in QueueRunner: Enqueue operation was cancelled
+	 [[Node: data/random_shuffle_queue_enqueue = QueueEnqueueV2[Tcomponents=[DT_UINT8, DT_INT32], timeout_ms=-1, _device="/job:localhost/replica:0/task:0/cpu:0"](data/random_shuffle_queue, decode_image/cond_jpeg/Merge/_127, Cast/_129)]]
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+ERROR:tensorflow:Exception in QueueRunner: Enqueue operation was cancelled
+	 [[Node: data/random_shuffle_queue_enqueue_1 = QueueEnqueueV2[Tcomponents=[DT_UINT8, DT_INT32], timeout_ms=-1, _device="/job:localhost/replica:0/task:0/cpu:0"](data/random_shuffle_queue, decode_image_1/cond_jpeg/Merge/_189, Cast_1/_191)]]    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+
+  File "../src/train.py", line 129, in main
+ERROR:tensorflow:Exception in QueueRunner: Enqueue operation was cancelled
+	 [[Node: input_producer/input_producer_EnqueueMany = QueueEnqueueManyV2[Tcomponents=[DT_STRING], timeout_ms=-1, _device="/job:localhost/replica:0/task:0/cpu:0"](input_producer, input_producer/RandomShuffle)]]
+ERROR:tensorflow:Exception in QueueRunner: Enqueue operation was cancelled
+	 [[Node: data/random_shuffle_queue_enqueue_3 = QueueEnqueueV2[Tcomponents=[DT_UINT8, DT_INT32], timeout_ms=-1, _device="/job:localhost/replica:0/task:0/cpu:0"](data/random_shuffle_queue, decode_image_3/cond_jpeg/Merge/_251, Cast_3/_253)]]
+    train( args , loss , I_HR , I_LR , I_SR )
+  File "../src/train.py", line 106, in train
+    coord.join(threads)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/coordinator.py", line 397, in join
+Exception in thread Thread-2:
+Traceback (most recent call last):
+  File "/home/hzl/anaconda3/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/home/hzl/anaconda3/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/queue_runner_impl.py", line 238, in _run
+    enqueue_callable()
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1235, in _single_operation_run
+    target_list_as_strings, status, None)
+  File "/home/hzl/anaconda3/lib/python3.6/contextlib.py", line 88, in __exit__
+    next(self.gen)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 466, in raise_exception_on_not_ok_status
+    pywrap_tensorflow.TF_GetCode(status))
+tensorflow.python.framework.errors_impl.CancelledError: Enqueue operation was cancelled
+	 [[Node: data/random_shuffle_queue_enqueue = QueueEnqueueV2[Tcomponents=[DT_UINT8, DT_INT32], timeout_ms=-1, _device="/job:localhost/replica:0/task:0/cpu:0"](data/random_shuffle_queue, decode_image/cond_jpeg/Merge/_127, Cast/_129)]]
+Exception in thread Thread-4:
+Traceback (most recent call last):
+  File "/home/hzl/anaconda3/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/home/hzl/anaconda3/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/queue_runner_impl.py", line 238, in _run
+    enqueue_callable()
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1235, in _single_operation_run
+    target_list_as_strings, status, None)
+  File "/home/hzl/anaconda3/lib/python3.6/contextlib.py", line 88, in __exit__
+    next(self.gen)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 466, in raise_exception_on_not_ok_status
+    pywrap_tensorflow.TF_GetCode(status))
+tensorflow.python.framework.errors_impl.CancelledError: Enqueue operation was cancelled
+	 [[Node: data/random_shuffle_queue_enqueue_2 = QueueEnqueueV2[Tcomponents=[DT_UINT8, DT_INT32], timeout_ms=-1, _device="/job:localhost/replica:0/task:0/cpu:0"](data/random_shuffle_queue, decode_image_2/cond_jpeg/Merge/_65, Cast_2/_67)]]
+
+Exception in thread Thread-3:
+Traceback (most recent call last):
+  File "/home/hzl/anaconda3/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/home/hzl/anaconda3/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/queue_runner_impl.py", line 238, in _run
+    enqueue_callable()
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1235, in _single_operation_run
+    target_list_as_strings, status, None)
+  File "/home/hzl/anaconda3/lib/python3.6/contextlib.py", line 88, in __exit__
+    next(self.gen)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 466, in raise_exception_on_not_ok_status
+    pywrap_tensorflow.TF_GetCode(status))
+tensorflow.python.framework.errors_impl.CancelledError: Enqueue operation was cancelled
+	 [[Node: data/random_shuffle_queue_enqueue_1 = QueueEnqueueV2[Tcomponents=[DT_UINT8, DT_INT32], timeout_ms=-1, _device="/job:localhost/replica:0/task:0/cpu:0"](data/random_shuffle_queue, decode_image_1/cond_jpeg/Merge/_189, Cast_1/_191)]]
+
+
+    " ".join(stragglers))
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "/home/hzl/anaconda3/lib/python3.6/threading.py", line 916, in _bootstrap_inner
+    self.run()
+  File "/home/hzl/anaconda3/lib/python3.6/threading.py", line 864, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/training/queue_runner_impl.py", line 238, in _run
+    enqueue_callable()
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1235, in _single_operation_run
+    target_list_as_strings, status, None)
+  File "/home/hzl/anaconda3/lib/python3.6/contextlib.py", line 88, in __exit__
+    next(self.gen)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 466, in raise_exception_on_not_ok_status
+    pywrap_tensorflow.TF_GetCode(status))
+tensorflow.python.framework.errors_impl.CancelledError: Enqueue operation was cancelled
+	 [[Node: data/random_shuffle_queue_enqueue_3 = QueueEnqueueV2[Tcomponents=[DT_UINT8, DT_INT32], timeout_ms=-1, _device="/job:localhost/replica:0/task:0/cpu:0"](data/random_shuffle_queue, decode_image_3/cond_jpeg/Merge/_251, Cast_3/_253)]]
+RuntimeError: Coordinator stopped with threads still running: Thread-1 Thread-5 Thread-3 Thread-4 Thread-2

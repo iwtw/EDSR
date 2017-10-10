@@ -10,28 +10,14 @@ from tf_tools import data_input
 
 def parse_args():
     parser = argparse.ArgumentParser( description = "train" )
-    parser.add_argument('-inputpath',help='input tfrecord path')
-#    parser.add_argument('-model',help='model dir')
-    parser.add_argument('-n_gpus',type=int)
-    parser.add_argument('-epoch_size',type=int)
-    parser.add_argument('--batch_size',type=int,default=64)
-    parser.add_argument('--width',type=int , default=96)
-    parser.add_argument('--height',type=int,default=112)
-    parser.add_argument('--dim',type=int,default=256)
-    parser.add_argument('--scale',type=int,default=4)
-    parser.add_argument('--upsample_method',default="subpixel")
-    parser.add_argument('--learning_rate',type=float,default=1e-6)
-    parser.add_argument('--n_epochs',type=int,default=20)
-    parser.add_argument('--log_step',type=int,default=10000)
+    parser.add_argument('-inputdir',help='input tfrecord dir')
+    parser.add_argument('-model',help='model dir')
+    parser.add_argument('--n_gpus' ,type = int , default = 1  )
     return parser.parse_args()
 
 def build_graph( args ):
     file_queue = tf.train.string_input_producer([args.inputdir] )
     I_HR , labels = data_input.get_batch(file_queue , (args.height,args.width) , args.batch_size , n_threads = 4 , min_after_dequeue = 5 , is_training = True )
-    #img , _ = data_input.parse_single_data(file_queue)
-    #with tf.Session() as sess:
-    #    save_images.save_images( [img.eval] , 0, 0 )
-    #assert 1==2
     I_LR = tf.image.resize_bicubic( I_HR , (int( args.height/args.scale) , int(args.width/args.scale) ))
     I_LR_split = tf.split( I_LR , args.n_gpus ) 
     I_BI = tf.image.resize_bicubic( I_LR , ( args.height , args.width) )
@@ -106,24 +92,10 @@ def train( args , loss , I_HR , I_BI , I_SR ):
         coord.join(threads)
 
 
-def init_dir(args):
-    def mkdir(path):
-        if not os.path.exists(path):
-            os.mkdir(path)
-    mkdir("../training_output") 
-    mkdir("../model")
-    mkdir("../log")
-
-    mkdir("../training_output/"+args.name)
 
 
 def main(_):
     args = parse_args()
-    args.name = "edsr_dim{}_{}_scale{}_epoch{}".format(args.dim , args.upsample_method , args.scale , args.n_epochs )
-    args.model_dir = "../model/"+args.name   
-    args.n_its_per_epoch = int( args.epoch_size / args.batch_size ) + ( args.epoch_size % args.batch_size != 0  )
-
-    init_dir(args)
     
     loss , I_HR , I_LR , I_SR = build_graph(args)
     train( args , loss , I_HR , I_LR , I_SR )
