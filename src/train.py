@@ -26,7 +26,7 @@ def parse_args():
     return parser.parse_args()
 
 def build_graph( args ):
-    file_queue = tf.train.string_input_producer([args.inputdir] )
+    file_queue = tf.train.string_input_producer([args.inputpath] )
     I_HR , labels = data_input.get_batch(file_queue , (args.height,args.width) , args.batch_size , n_threads = 4 , min_after_dequeue = 5 , is_training = True )
     #img , _ = data_input.parse_single_data(file_queue)
     #with tf.Session() as sess:
@@ -126,6 +126,7 @@ def main(_):
     init_dir(args)
     
     loss , I_HR , I_LR , I_SR = build_graph(args)
+    print("build done")
     train( args , loss , I_HR , I_LR , I_SR )
     
 if __name__ == "__main__":

@@ -1051,3 +1051,298 @@ Traceback (most recent call last):
 tensorflow.python.framework.errors_impl.CancelledError: Enqueue operation was cancelled
 	 [[Node: data/random_shuffle_queue_enqueue_3 = QueueEnqueueV2[Tcomponents=[DT_UINT8, DT_INT32], timeout_ms=-1, _device="/job:localhost/replica:0/task:0/cpu:0"](data/random_shuffle_queue, decode_image_3/cond_jpeg/Merge/_251, Cast_3/_253)]]
 RuntimeError: Coordinator stopped with threads still running: Thread-1 Thread-5 Thread-3 Thread-4 Thread-2
+Traceback (most recent call last):
+  File "../src/train.py", line 132, in <module>
+    tf.app.run(main)
+  File "/home/hzl/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 128, in main
+    loss , I_HR , I_LR , I_SR = build_graph(args)
+  File "../src/train.py", line 29, in build_graph
+    file_queue = tf.train.string_input_producer([args.inputdir] )
+AttributeError: 'Namespace' object has no attribute 'inputdir'
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+2017-10-21 20:12:44.503099: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.46GiB
+2017-10-21 20:12:45.084118: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x52cb650 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-10-21 20:12:45.087218: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-10-21 20:12:45.682623: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x52cf480 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-10-21 20:12:45.684517: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 2 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.582
+pciBusID 0000:83:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-10-21 20:12:46.529932: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x52f3d30 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-10-21 20:12:46.531828: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 3 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:84:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-10-21 20:12:46.533762: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 2
+2017-10-21 20:12:46.533808: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 3
+2017-10-21 20:12:46.533866: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 2
+2017-10-21 20:12:46.533898: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 3
+2017-10-21 20:12:46.533928: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 0
+2017-10-21 20:12:46.533958: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 1
+2017-10-21 20:12:46.535387: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 0
+2017-10-21 20:12:46.535433: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 1
+2017-10-21 20:12:46.535576: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 2 3 
+2017-10-21 20:12:46.535600: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y N N 
+2017-10-21 20:12:46.535642: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y N N 
+2017-10-21 20:12:46.535657: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 2:   N N Y Y 
+2017-10-21 20:12:46.535670: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 3:   N N Y Y 
+2017-10-21 20:12:46.535832: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-10-21 20:12:46.535925: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-10-21 20:12:46.535943: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0)
+2017-10-21 20:12:46.535958: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0)
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+build done
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+EDSR------------------------------------
+build done
+2017-10-21 20:22:52.566825: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.46GiB
+2017-10-21 20:22:53.140731: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x53ae910 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-10-21 20:22:53.142631: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-10-21 20:22:53.637824: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x53b2740 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-10-21 20:22:53.639694: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 2 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.582
+pciBusID 0000:83:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-10-21 20:22:54.171645: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x53b6570 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-10-21 20:22:54.173542: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 3 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:84:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-10-21 20:22:54.176092: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 2
+2017-10-21 20:22:54.176225: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 3
+2017-10-21 20:22:54.176320: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 2
+2017-10-21 20:22:54.176355: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 3
+2017-10-21 20:22:54.176386: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 0
+2017-10-21 20:22:54.176415: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 1
+2017-10-21 20:22:54.178066: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 0
+2017-10-21 20:22:54.178110: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 1
+2017-10-21 20:22:54.178260: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 2 3 
+2017-10-21 20:22:54.178285: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y N N 
+2017-10-21 20:22:54.178298: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y N N 
+2017-10-21 20:22:54.178310: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 2:   N N Y Y 
+2017-10-21 20:22:54.178322: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 3:   N N Y Y 
+2017-10-21 20:22:54.178373: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-10-21 20:22:54.178394: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-10-21 20:22:54.178409: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0)
+2017-10-21 20:22:54.178423: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0)
+[(<tf.Tensor 'decode_image/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_1/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_1:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_2/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_2:0' shape=() dtype=int32>), (<tf.Tensor 'decode_image_3/cond_jpeg/Merge:0' shape=(112, 96, 3) dtype=uint8>, <tf.Tensor 'Cast_3:0' shape=() dtype=int32>)]
+EDSR------------------------------------
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+False
+EDSR------------------------------------
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+True
+build done
+2017-10-21 20:25:43.298120: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:02:00.0
+Total memory: 10.91GiB
+Free memory: 10.46GiB
+2017-10-21 20:25:43.809799: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x532b2c0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-10-21 20:25:43.811870: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:03:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-10-21 20:25:44.325796: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x532f0f0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-10-21 20:25:44.327669: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 2 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.582
+pciBusID 0000:83:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-10-21 20:25:44.842536: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x5332f20 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2017-10-21 20:25:44.844408: I tensorflow/core/common_runtime/gpu/gpu_device.cc:955] Found device 3 with properties: 
+name: GeForce GTX 1080 Ti
+major: 6 minor: 1 memoryClockRate (GHz) 1.62
+pciBusID 0000:84:00.0
+Total memory: 10.91GiB
+Free memory: 10.76GiB
+2017-10-21 20:25:44.846333: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 2
+2017-10-21 20:25:44.846380: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 0 and 3
+2017-10-21 20:25:44.846441: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 2
+2017-10-21 20:25:44.846474: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 1 and 3
+2017-10-21 20:25:44.846505: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 0
+2017-10-21 20:25:44.846536: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 2 and 1
+2017-10-21 20:25:44.847979: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 0
+2017-10-21 20:25:44.848024: I tensorflow/core/common_runtime/gpu/gpu_device.cc:847] Peer access not supported between device ordinals 3 and 1
+2017-10-21 20:25:44.848161: I tensorflow/core/common_runtime/gpu/gpu_device.cc:976] DMA: 0 1 2 3 
+2017-10-21 20:25:44.848184: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 0:   Y Y N N 
+2017-10-21 20:25:44.848197: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 1:   Y Y N N 
+2017-10-21 20:25:44.848209: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 2:   N N Y Y 
+2017-10-21 20:25:44.848221: I tensorflow/core/common_runtime/gpu/gpu_device.cc:986] 3:   N N Y Y 
+2017-10-21 20:25:44.848249: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0)
+2017-10-21 20:25:44.848268: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
+2017-10-21 20:25:44.848283: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0)
+2017-10-21 20:25:44.848297: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0)
