@@ -15,8 +15,8 @@ def parse_args():
     parser.add_argument('-n_gpus',type=int)
     parser.add_argument('-epoch_size',type=int)
     parser.add_argument('--batch_size',type=int,default=64)
-    parser.add_argument('--width',type=int , default=96)
     parser.add_argument('--height',type=int,default=112)
+    parser.add_argument('--width',type=int , default=96)
     parser.add_argument('--dim',type=int,default=256)
     parser.add_argument('--scale',type=int,default=4)
     parser.add_argument('--upsample_method',default="subpixel")
@@ -98,7 +98,7 @@ def train( args , loss , I_HR , I_BI , I_SR ):
                 writer.flush()
                 saver.save( sess , args.model_dir+"/model" )
                 epoch = int ( it() / args.n_its_per_epoch ) + ( it() % args.n_its_per_epoch!=0)
-                save_images.save_images("../training_output/"+args.name,[i_hr,i_bi,i_sr],it() , epoch )
+                save_images.save_training_images("../training_output/"+args.name,[i_hr,i_bi,i_sr],it() , epoch )
                # print("step:{}".format(it()))
             sess.run(train_op)
 

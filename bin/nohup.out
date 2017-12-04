@@ -1346,3 +1346,36 @@ Free memory: 10.76GiB
 2017-10-21 20:25:44.848268: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0)
 2017-10-21 20:25:44.848283: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0)
 2017-10-21 20:25:44.848297: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Creating TensorFlow device (/gpu:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0)
+Tensor("Shape:0", shape=(?,), dtype=int32)
+Tensor("Shape_1:0", shape=(?,), dtype=int32)
+Tensor("Shape_2:0", shape=(?,), dtype=int32)
+Tensor("Shape_3:0", shape=(?,), dtype=int32)
+EDSR------------------------------------
+EDSR------------------------------------
+build done
+2017-11-21 16:33:59.979590: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:02:00.0
+totalMemory: 10.91GiB freeMemory: 9.23GiB
+2017-11-21 16:34:00.645134: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:03:00.0
+totalMemory: 10.91GiB freeMemory: 10.76GiB
+2017-11-21 16:34:01.148989: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 2 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:83:00.0
+totalMemory: 10.91GiB freeMemory: 10.76GiB
+2017-11-21 16:34:01.670160: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 3 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:84:00.0
+totalMemory: 10.91GiB freeMemory: 10.76GiB
+2017-11-21 16:34:01.674117: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2017-11-21 16:34:01.684380: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 2 3 
+2017-11-21 16:34:01.684412: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y Y N N 
+2017-11-21 16:34:01.684425: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   Y Y N N 
+2017-11-21 16:34:01.684437: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 2:   N N Y Y 
+2017-11-21 16:34:01.684449: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 3:   N N Y Y 
+2017-11-21 16:34:01.684472: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:02:00.0, compute capability: 6.1)
+2017-11-21 16:34:01.684501: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0, compute capability: 6.1)
+2017-11-21 16:34:01.684521: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2017-11-21 16:34:01.684536: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0, compute capability: 6.1)
