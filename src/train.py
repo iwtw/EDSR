@@ -78,7 +78,8 @@ def build_and_train( args ):
     
     #####train
 
-    epoch_step = tf.placeholder( tf.int32 )
+    epoch_step = tf.Variable( 0 , tf.int32 , trainable = False )
+    epoch_step_inc = tf.assign_add( eoch_step , 1 )
     global_step = tf.Variable( 0 , trainable = False )
     boundaries = [ decay_period * i * args.n_its_per_epoch for i in range(int(args.n_epochs / decay_period ))  ]
     learning_rate = tf.train.exponential_decay( args.learning_rate , global_step = epoch_step , decay_step  = 1  , decay_rate = 0.1 )
@@ -107,12 +108,14 @@ def build_and_train( args ):
         train_handle , val_handle = sess.run( [ iterators["train"].string_handle()   , iterators["val"].string_handle ] )
         sess.run(iterators["val"].initializer , feed_dict = {filenames:[args.val_input]})
 
-        for epoch in range(args.n_epochs):
+        #for epoch in range(args.n_epochs):
+        while epoch_step.eval() < args.n_epochs:
             sess.run(iterators["train"].initializer )
             while True:
                 try:
-                    _ , train_log = sess.run([train_op,merged_summary] , feed_dict ={ handle:train_handle  , epoch_step:epoch })
+                    _ , train_log = sess.run([train_op,merged_summary] , feed_dict ={ handle:train_handle   })
                 except tf.errors.OutOfRangeError:
+                    sess.run( epoch_step_inc )
                     break
 
             def save_log():
@@ -169,7 +172,7 @@ def parse_args():
     parser.add_argument('--dim',type=int,default=256)
     parser.add_argument('--scale',type=int,default=4)
     parser.add_argument('--upsample_method',default="subpixel")
-    parser.add_argument('--learning_rate',type=float,default=1e-6)
+    parser.add_argument('--learning_rate',type=float,default=1e-3)
     parser.add_argument('--n_epochs',type=int,default=20)
     args = parser.parse_args()
 
