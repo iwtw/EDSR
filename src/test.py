@@ -22,7 +22,6 @@ def build_graph(  ):
 
     iterator = dataset.make_initializable_iterator()
     I_LR = iterator.get_next()
-    print(args.n_gpus)
     I_LR_split = tf.split( I_LR , args.n_gpus )
 
 
