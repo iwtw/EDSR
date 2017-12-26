@@ -9,6 +9,7 @@ from tf_tools import data_input
 import skimage.transform
 import skimage.io
 import json
+import time
 
 
 
@@ -40,12 +41,22 @@ def _parse_function( args ):
         return image_LR , image_HR
     return parser
 
+def _filter_function(n_gpus):
+    def f(x,y):
+        a = tf.equal( tf.mod( tf.shape(x)[0] , n_gpus ) , 0 )  
+        b = tf.equal( tf.mod( tf.shape(y)[0] , n_gpus ) , 0 )  
+        return tf.logical_and(a,b)
+    return f
+
+
 def build_and_train( args ):
     def build_dataset(filenames):
         dataset = ( tf.data.TFRecordDataset( filenames )
             .map( _parse_function(args) , num_parallel_calls = 8 )
             .shuffle( buffer_size = 10000 )
-            .batch( args.batch_size ) )
+            .batch( args.batch_size   )
+            .filter(  _filter_function(args.n_gpus))
+            )
         return dataset
     
     train_dataset = build_dataset( args.train_input )
@@ -116,12 +127,16 @@ def build_and_train( args ):
 
         sess.run(val_iterator.initializer )
         #for epoch in range(args.n_epochs):
+        prev_time = time.time()
         while epoch_step.eval() < args.n_epochs:
             sess.run(train_iterator.initializer )
             while True:
                 try:
                     sess.run(train_op, feed_dict ={ handle:train_handle })
-                    if global_step % args.log_step == 0 :
+                    if global_step.eval() % args.log_step == 0 :
+                        temp_time = time.time()
+                        print("     epoch %d it %e , %.1f iters/s"%(epoch_step.eval(),global_step,args.log_step/(temp_time-prev_time)))
+                        prev_time = temp_time
                         train_log = sess.run( merged_summary , feed_dict ={handle:train_handle })
                         train_writer.add_summary( train_log , global_step.eval() )
                         train_writer.flush()
@@ -157,7 +172,6 @@ def parse_args():
     parser.add_argument('-train_input',help='train tfrecord filename')
     parser.add_argument('-val_input',help='val tfrecord filename')
     parser.add_argument('-n_gpus',type=int)
-    parser.add_argument('-label_to_path',type=str,help='json filename storing label to path mapping')
     parser.add_argument('--log_step',type=int,default=10000)
     parser.add_argument('--batch_size',type=int,default=64)
     parser.add_argument('--height',type=int,default=112)
@@ -173,7 +187,6 @@ def parse_args():
 
     args.name = "EDSR__dataset_%s__dim%d__n_blocks%d__%s__scale%d__epoch%d__lr%e__dr%f"%(args.train_input.split("/")[-1].split(".")[-2] , args.dim , args.n_blocks , args.upsample_method , args.scale , args.n_epochs , args.learning_rate , args.decay_rate )
     args.model_dir = "../model/"+args.name   
-    args.label_to_path = json.load( open(args.label_to_path , "r") )
     return args
 
 def main(_):
