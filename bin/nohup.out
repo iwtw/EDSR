@@ -1379,3 +1379,1391 @@ totalMemory: 10.91GiB freeMemory: 10.76GiB
 2017-11-21 16:34:01.684501: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:03:00.0, compute capability: 6.1)
 2017-11-21 16:34:01.684521: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:2) -> (device: 2, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
 2017-11-21 16:34:01.684536: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:3) -> (device: 3, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0, compute capability: 6.1)
+Traceback (most recent call last):
+  File "../src/train.py", line 195, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 188, in main
+    args = parse_args()
+  File "../src/train.py", line 183, in parse_args
+    args.n_its_per_epoch = int( args.epoch_size / args.batch_size ) + ( args.epoch_size % args.batch_size != 0  )
+AttributeError: 'Namespace' object has no attribute 'epoch_size'
+Traceback (most recent call last):
+  File "../src/train.py", line 194, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 187, in main
+    args = parse_args()
+  File "../src/train.py", line 183, in parse_args
+    args.label_to_path = json.load( open(args.label_to_path , "r") )
+NameError: name 'json' is not defined
+Traceback (most recent call last):
+  File "../src/train.py", line 195, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 192, in main
+    build_and_train(args)
+  File "../src/train.py", line 40, in build_and_train
+    train_dataset = build_dataset( args.train_input )
+  File "../src/train.py", line 34, in build_dataset
+    dataset = tf.data.TFRecordDataset( train_filenames )
+NameError: name 'train_filenames' is not defined
+Traceback (most recent call last):
+  File "../src/train.py", line 195, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 192, in main
+    build_and_train(args)
+  File "../src/train.py", line 40, in build_and_train
+    train_dataset = build_dataset( args.train_input )
+  File "../src/train.py", line 35, in build_dataset
+    dataset.map(_parse_function )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 712, in map
+    return MapDataset(self, map_func)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1385, in __init__
+    self._map_func.add_to_graph(ops.get_default_graph())
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 486, in add_to_graph
+    self._create_definition_if_needed()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 321, in _create_definition_if_needed
+    self._create_definition_if_needed_impl()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 338, in _create_definition_if_needed_impl
+    outputs = self._func(*inputs)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1360, in tf_map_func
+    ret = map_func(nested_args)
+  File "../src/train.py", line 26, in _parse_function
+    parsed_feature = tf.parse_single_example( example_proto , feature )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/parsing_ops.py", line 759, in parse_single_example
+    dense_types, dense_defaults, dense_shapes, name)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/parsing_ops.py", line 833, in _parse_single_example_raw
+    name=name)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/parsing_ops.py", line 706, in _parse_example_raw
+    name=name)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/gen_parsing_ops.py", line 263, in _parse_example
+    dense_shapes=dense_shapes, name=name)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 629, in _apply_op_helper
+    param_name=input_name)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 60, in _SatisfiesTypeConstraint
+    ", ".join(dtypes.as_dtype(x).name for x in allowed_list)))
+TypeError: Value passed to parameter 'dense_defaults' has DataType int32 not in list of allowed values: float32, int64, string
+Traceback (most recent call last):
+  File "../src/train.py", line 195, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 192, in main
+    build_and_train(args)
+  File "../src/train.py", line 55, in build_and_train
+    label , I_LR = iterator.get_next()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 505, in __iter__
+    raise TypeError("'Tensor' object is not iterable.")
+TypeError: 'Tensor' object is not iterable.
+  File "../src/train.py", line 35
+    .map(_parse_function )
+    ^
+SyntaxError: invalid syntax
+Traceback (most recent call last):
+  File "../src/train.py", line 195, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 192, in main
+    build_and_train(args)
+  File "../src/train.py", line 60, in build_and_train
+    I_HR_split = tf.split(I_HR , args.n_gpus )
+NameError: name 'I_HR' is not defined
+EDSR------------------------------------
+Traceback (most recent call last):
+  File "../src/train.py", line 177, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 174, in main
+    build_and_train(args)
+  File "../src/train.py", line 69, in build_and_train
+    I_SR_i = edsr.edsr( I_LR_i , args.scale, dim = args.dim , n_blocks = args.n_blocks ,  reuse = reuse )
+  File "/home/wtw/edsr/src/edsr.py", line 23, in edsr
+    conv1 = utils.conv2d( inputs , dim , 3 , 1 , regularization_scale = regularization_scale  )
+  File "/home/wtw/edsr/src/utils.py", line 8, in conv2d
+    fan_in = C * kernel_size**2
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'int'
+Traceback (most recent call last):
+  File "../src/train.py", line 178, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 175, in main
+    build_and_train(args)
+  File "../src/train.py", line 42, in build_and_train
+    train_dataset = build_dataset( args.train_input )
+  File "../src/train.py", line 37, in build_dataset
+    .map(_parse_function )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 712, in map
+    return MapDataset(self, map_func)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1385, in __init__
+    self._map_func.add_to_graph(ops.get_default_graph())
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 486, in add_to_graph
+    self._create_definition_if_needed()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 321, in _create_definition_if_needed
+    self._create_definition_if_needed_impl()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 338, in _create_definition_if_needed_impl
+    outputs = self._func(*inputs)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1360, in tf_map_func
+    ret = map_func(nested_args)
+  File "../src/train.py", line 30, in _parse_function
+    image_LR = preprocessing_function( image_LR_string )
+  File "../src/train.py", line 17, in preprocessing_function
+    image = image.set_shape([args.height , args.width , 3])
+NameError: name 'args' is not defined
+Traceback (most recent call last):
+  File "../src/train.py", line 180, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 177, in main
+    build_and_train(args)
+  File "../src/train.py", line 44, in build_and_train
+    train_dataset = build_dataset( args.train_input )
+  File "../src/train.py", line 39, in build_dataset
+    .map(_parse_function(args.width,height) , num_parallel_calls = 8 )
+NameError: name 'height' is not defined
+Traceback (most recent call last):
+  File "../src/train.py", line 181, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 178, in main
+    build_and_train(args)
+  File "../src/train.py", line 45, in build_and_train
+    train_dataset = build_dataset( args.train_input )
+  File "../src/train.py", line 40, in build_dataset
+    .map(_parse_function(args) , num_parallel_calls = 8 )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 714, in map
+    return ParallelMapDataset(self, map_func, num_parallel_calls)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1410, in __init__
+    super(ParallelMapDataset, self).__init__(input_dataset, map_func)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1385, in __init__
+    self._map_func.add_to_graph(ops.get_default_graph())
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 486, in add_to_graph
+    self._create_definition_if_needed()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 321, in _create_definition_if_needed
+    self._create_definition_if_needed_impl()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 338, in _create_definition_if_needed_impl
+    outputs = self._func(*inputs)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1360, in tf_map_func
+    ret = map_func(nested_args)
+  File "../src/train.py", line 32, in parser
+    image_LR = preprocessing_function( image_LR_string , args.height/args.scale , args.width/args.scale )
+NameError: name 'preprocessing_function' is not defined
+Traceback (most recent call last):
+  File "../src/train.py", line 181, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 178, in main
+    build_and_train(args)
+  File "../src/train.py", line 45, in build_and_train
+    train_dataset = build_dataset( args.train_input )
+  File "../src/train.py", line 40, in build_dataset
+    .map(_parse_function(args) , num_parallel_calls = 8 )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 714, in map
+    return ParallelMapDataset(self, map_func, num_parallel_calls)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1410, in __init__
+    super(ParallelMapDataset, self).__init__(input_dataset, map_func)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1385, in __init__
+    self._map_func.add_to_graph(ops.get_default_graph())
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 486, in add_to_graph
+    self._create_definition_if_needed()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 321, in _create_definition_if_needed
+    self._create_definition_if_needed_impl()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 338, in _create_definition_if_needed_impl
+    outputs = self._func(*inputs)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1360, in tf_map_func
+    ret = map_func(nested_args)
+  File "../src/train.py", line 32, in parser
+    image_LR = preprocess_for_train( image_LR_string , args.height/args.scale , args.width/args.scale )
+  File "../src/train.py", line 18, in preprocess_for_train
+    image= tf.cast( image, tf.float32  )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py", line 742, in cast
+    x = ops.convert_to_tensor(x, name="x")
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 836, in convert_to_tensor
+    as_ref=False)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 926, in internal_convert_to_tensor
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/constant_op.py", line 229, in _constant_tensor_conversion_function
+    return constant(v, dtype=dtype, name=name)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/constant_op.py", line 208, in constant
+    value, dtype=dtype, shape=shape, verify_shape=verify_shape))
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/tensor_util.py", line 371, in make_tensor_proto
+    raise ValueError("None values not supported.")
+ValueError: None values not supported.
+Traceback (most recent call last):
+  File "../src/train.py", line 187, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 184, in main
+    build_and_train(args)
+  File "../src/train.py", line 51, in build_and_train
+    train_dataset = build_dataset( args.train_input )
+  File "../src/train.py", line 46, in build_dataset
+    .map(_parse_function(args) , num_parallel_calls = 8 )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 714, in map
+    return ParallelMapDataset(self, map_func, num_parallel_calls)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1410, in __init__
+    super(ParallelMapDataset, self).__init__(input_dataset, map_func)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1385, in __init__
+    self._map_func.add_to_graph(ops.get_default_graph())
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 486, in add_to_graph
+    self._create_definition_if_needed()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 321, in _create_definition_if_needed
+    self._create_definition_if_needed_impl()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 338, in _create_definition_if_needed_impl
+    outputs = self._func(*inputs)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1360, in tf_map_func
+    ret = map_func(nested_args)
+  File "../src/train.py", line 39, in parser
+    image_HR = preprocess_for_hr_image( image_HR_string , args.height , args.width )
+  File "../src/train.py", line 23, in preprocess_for_hr_image
+    image = tf.image.decode_image( image_string , height , width )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/image_ops_impl.py", line 1351, in decode_image
+    with ops.name_scope(name, 'decode_image'):
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 4932, in __enter__
+    return self._name_scope.__enter__()
+  File "/home/wtw/anaconda3/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 3518, in name_scope
+    if not _VALID_OP_NAME_REGEX.match(name):
+TypeError: expected string or bytes-like object
+------------------------------------
+<class 'tensorflow.python.framework.ops.Tensor'> <class 'tensorflow.python.framework.ops.Tensor'>
+Traceback (most recent call last):
+  File "../src/train.py", line 189, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 186, in main
+    build_and_train(args)
+  File "../src/train.py", line 53, in build_and_train
+    train_dataset = build_dataset( args.train_input )
+  File "../src/train.py", line 48, in build_dataset
+    .map(_parse_function(args) , num_parallel_calls = 8 )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 714, in map
+    return ParallelMapDataset(self, map_func, num_parallel_calls)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1410, in __init__
+    super(ParallelMapDataset, self).__init__(input_dataset, map_func)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1385, in __init__
+    self._map_func.add_to_graph(ops.get_default_graph())
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 486, in add_to_graph
+    self._create_definition_if_needed()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 321, in _create_definition_if_needed
+    self._create_definition_if_needed_impl()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 338, in _create_definition_if_needed_impl
+    outputs = self._func(*inputs)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1360, in tf_map_func
+    ret = map_func(nested_args)
+  File "../src/train.py", line 41, in parser
+    image_HR = preprocess_for_hr_image( image_HR_string , args.height , args.width )
+  File "../src/train.py", line 23, in preprocess_for_hr_image
+    image = tf.image.decode_image( image_string , height , width )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/image_ops_impl.py", line 1351, in decode_image
+    with ops.name_scope(name, 'decode_image'):
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 4932, in __enter__
+    return self._name_scope.__enter__()
+  File "/home/wtw/anaconda3/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 3518, in name_scope
+    if not _VALID_OP_NAME_REGEX.match(name):
+TypeError: expected string or bytes-like object
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+Traceback (most recent call last):
+  File "../src/train.py", line 189, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 186, in main
+    build_and_train(args)
+  File "../src/train.py", line 53, in build_and_train
+    train_dataset = build_dataset( args.train_input )
+  File "../src/train.py", line 48, in build_dataset
+    .map(_parse_function(args) , num_parallel_calls = 8 )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 714, in map
+    return ParallelMapDataset(self, map_func, num_parallel_calls)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1410, in __init__
+    super(ParallelMapDataset, self).__init__(input_dataset, map_func)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1385, in __init__
+    self._map_func.add_to_graph(ops.get_default_graph())
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 486, in add_to_graph
+    self._create_definition_if_needed()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 321, in _create_definition_if_needed
+    self._create_definition_if_needed_impl()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/function.py", line 338, in _create_definition_if_needed_impl
+    outputs = self._func(*inputs)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/dataset_ops.py", line 1360, in tf_map_func
+    ret = map_func(nested_args)
+  File "../src/train.py", line 41, in parser
+    image_HR = preprocess_for_hr_image( image_HR_string , args.height , args.width )
+  File "../src/train.py", line 23, in preprocess_for_hr_image
+    image = tf.image.decode_image( image_string , height , width )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/image_ops_impl.py", line 1351, in decode_image
+    with ops.name_scope(name, 'decode_image'):
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 4932, in __enter__
+    return self._name_scope.__enter__()
+  File "/home/wtw/anaconda3/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 3518, in name_scope
+    if not _VALID_OP_NAME_REGEX.match(name):
+TypeError: expected string or bytes-like object
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+EDSR------------------------------------
+Traceback (most recent call last):
+  File "../src/train.py", line 189, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 186, in main
+    build_and_train(args)
+  File "../src/train.py", line 81, in build_and_train
+    I_SR_i = edsr.edsr( I_LR_i , args.scale, dim = args.dim , n_blocks = args.n_blocks ,  reuse = reuse )
+  File "/home/wtw/edsr/src/edsr.py", line 25, in edsr
+    for i in range(block_length):
+NameError: name 'block_length' is not defined
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+EDSR------------------------------------
+EDSR------------------------------------
+Traceback (most recent call last):
+  File "../src/train.py", line 189, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 186, in main
+    build_and_train(args)
+  File "../src/train.py", line 94, in build_and_train
+    epoch_step = tf.Variable( 0 , tf.int32 , trainable = False )
+TypeError: __init__() got multiple values for argument 'trainable'
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+EDSR------------------------------------
+EDSR------------------------------------
+Traceback (most recent call last):
+  File "../src/train.py", line 189, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 186, in main
+    build_and_train(args)
+  File "../src/train.py", line 95, in build_and_train
+    epoch_step_inc = tf.assign_add( eoch_step , 1 )
+NameError: name 'eoch_step' is not defined
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+EDSR------------------------------------
+EDSR------------------------------------
+Traceback (most recent call last):
+  File "../src/train.py", line 189, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 186, in main
+    build_and_train(args)
+  File "../src/train.py", line 97, in build_and_train
+    boundaries = [ decay_period * i * args.n_its_per_epoch for i in range(int(args.n_epochs / decay_period ))  ]
+NameError: name 'decay_period' is not defined
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+EDSR------------------------------------
+EDSR------------------------------------
+Traceback (most recent call last):
+  File "../src/train.py", line 188, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 185, in main
+    build_and_train(args)
+  File "../src/train.py", line 97, in build_and_train
+    learning_rate = tf.train.exponential_decay( args.learning_rate , global_step = epoch_step , decay_step  = 1  , decay_rate = args.decay_rate )
+TypeError: exponential_decay() got an unexpected keyword argument 'decay_step'
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+EDSR------------------------------------
+EDSR------------------------------------
+2017-12-26 16:32:29.791197: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:83:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:32:30.629012: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:84:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:32:30.631196: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2017-12-26 16:32:30.631278: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 
+2017-12-26 16:32:30.631302: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y Y 
+2017-12-26 16:32:30.631315: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   Y Y 
+2017-12-26 16:32:30.631347: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2017-12-26 16:32:30.631365: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0, compute capability: 6.1)
+Traceback (most recent call last):
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 271, in __init__
+    fetch, allow_tensor=True, allow_operation=True))
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 3035, in as_graph_element
+    return self._as_graph_element_locked(obj, allow_tensor, allow_operation)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 3124, in _as_graph_element_locked
+    types_str))
+TypeError: Can not convert a method into a Tensor or Operation.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "../src/train.py", line 188, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 185, in main
+    build_and_train(args)
+  File "../src/train.py", line 120, in build_and_train
+    train_handle , val_handle = sess.run( [ iterators["train"].string_handle()   , iterators["val"].string_handle ] )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 889, in run
+    run_metadata_ptr)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1105, in _run
+    self._graph, fetches, feed_dict_tensor, feed_handles=feed_handles)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 414, in __init__
+    self._fetch_mapper = _FetchMapper.for_fetch(fetches)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 234, in for_fetch
+    return _ListFetchMapper(fetch)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 341, in __init__
+    self._mappers = [_FetchMapper.for_fetch(fetch) for fetch in fetches]
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 341, in <listcomp>
+    self._mappers = [_FetchMapper.for_fetch(fetch) for fetch in fetches]
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 242, in for_fetch
+    return _ElementFetchMapper(fetches, contraction_fn)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 275, in __init__
+    % (fetch, type(fetch), str(e)))
+TypeError: Fetch argument <bound method Iterator.string_handle of <tensorflow.python.data.ops.iterator_ops.Iterator object at 0x7fc33b8b5da0>> has invalid type <class 'method'>, must be a string or Tensor. (Can not convert a method into a Tensor or Operation.)
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+EDSR------------------------------------
+EDSR------------------------------------
+2017-12-26 16:35:50.623592: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:83:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:35:51.166546: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:84:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:35:51.169045: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2017-12-26 16:35:51.169124: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 
+2017-12-26 16:35:51.169147: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y Y 
+2017-12-26 16:35:51.169160: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   Y Y 
+2017-12-26 16:35:51.169191: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2017-12-26 16:35:51.169209: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0, compute capability: 6.1)
+Traceback (most recent call last):
+  File "../src/train.py", line 185, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 182, in main
+    build_and_train(args)
+  File "../src/train.py", line 122, in build_and_train
+    sess.run(iterators["train"].initializer )
+NameError: name 'iterators' is not defined
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+EDSR------------------------------------
+EDSR------------------------------------
+2017-12-26 16:36:48.801310: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:83:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:36:49.412289: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:84:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:36:49.418125: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2017-12-26 16:36:49.418205: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 
+2017-12-26 16:36:49.418229: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y Y 
+2017-12-26 16:36:49.418243: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   Y Y 
+2017-12-26 16:36:49.418267: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2017-12-26 16:36:49.418285: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0, compute capability: 6.1)
+Traceback (most recent call last):
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1323, in _do_call
+    return fn(*args)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1302, in _run_fn
+    status, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 473, in __exit__
+    c_api.TF_GetCode(self.status.status))
+tensorflow.python.framework.errors_impl.OutOfRangeError: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+	 [[Node: split/_11 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:1", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_89_split", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:1"]()]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "../src/train.py", line 125, in build_and_train
+    _ , train_log = sess.run([train_op,merged_summary] , feed_dict ={ handle:train_handle   })
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 889, in run
+    run_metadata_ptr)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1120, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1317, in _do_run
+    options, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1336, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.OutOfRangeError: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+	 [[Node: split/_11 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:1", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_89_split", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:1"]()]]
+
+Caused by op 'IteratorGetNext', defined at:
+  File "../src/train.py", line 185, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 182, in main
+    build_and_train(args)
+  File "../src/train.py", line 65, in build_and_train
+    I_LR , I_HR = iterator.get_next()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 259, in get_next
+    name=name))
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/gen_dataset_ops.py", line 706, in iterator_get_next
+    output_shapes=output_shapes, name=name)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+OutOfRangeError (see above for traceback): End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+	 [[Node: split/_11 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:1", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_89_split", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:1"]()]]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "../src/train.py", line 185, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 182, in main
+    build_and_train(args)
+  File "../src/train.py", line 127, in build_and_train
+    train_writer.add_summary( train_log , epoch_step.eval() )
+UnboundLocalError: local variable 'train_log' referenced before assignment
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+------------------------------------
+<dtype: 'string'> <dtype: 'string'>
+EDSR------------------------------------
+EDSR------------------------------------
+2017-12-26 16:39:04.927856: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:83:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:39:05.487077: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:84:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:39:05.489149: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2017-12-26 16:39:05.489227: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 
+2017-12-26 16:39:05.489251: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y Y 
+2017-12-26 16:39:05.489265: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   Y Y 
+2017-12-26 16:39:05.489289: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2017-12-26 16:39:05.489307: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0, compute capability: 6.1)
+2017-12-26 16:39:10.330276: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.330828: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.330927: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331309: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331391: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331441: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331485: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331547: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331593: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331636: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331680: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331724: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331766: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331809: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331851: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331896: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331939: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.331979: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332020: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332061: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332115: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332162: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332205: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332248: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332291: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332333: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332374: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332416: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332458: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332500: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332541: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332582: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332624: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332674: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332718: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332761: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332803: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332845: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332886: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332927: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.332968: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333009: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333050: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333092: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333133: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333175: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333225: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333270: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333311: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333352: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333394: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333434: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333477: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333518: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333559: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333600: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333641: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333683: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333724: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333764: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333816: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333859: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333901: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333943: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.333985: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.334027: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.334069: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.334111: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.334152: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.334195: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.334236: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.334277: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.334319: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.334372: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:39:10.334420: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+Traceback (most recent call last):
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1323, in _do_call
+    return fn(*args)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1302, in _run_fn
+    status, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 473, in __exit__
+    c_api.TF_GetCode(self.status.status))
+tensorflow.python.framework.errors_impl.OutOfRangeError: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+	 [[Node: EDSR/Block1/Conv/biases/read/_33 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:1", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_137_EDSR/Block1/Conv/biases/read", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:1"]()]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "../src/train.py", line 126, in build_and_train
+    _ , train_log = sess.run([train_op,merged_summary] , feed_dict ={ handle:train_handle   })
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 889, in run
+    run_metadata_ptr)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1120, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1317, in _do_run
+    options, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1336, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.OutOfRangeError: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+	 [[Node: EDSR/Block1/Conv/biases/read/_33 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:1", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_137_EDSR/Block1/Conv/biases/read", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:1"]()]]
+
+Caused by op 'IteratorGetNext', defined at:
+  File "../src/train.py", line 186, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 183, in main
+    build_and_train(args)
+  File "../src/train.py", line 65, in build_and_train
+    I_LR , I_HR = iterator.get_next()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 259, in get_next
+    name=name))
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/gen_dataset_ops.py", line 706, in iterator_get_next
+    output_shapes=output_shapes, name=name)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+OutOfRangeError (see above for traceback): End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+	 [[Node: EDSR/Block1/Conv/biases/read/_33 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:1", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_137_EDSR/Block1/Conv/biases/read", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:1"]()]]
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "../src/train.py", line 186, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 183, in main
+    build_and_train(args)
+  File "../src/train.py", line 128, in build_and_train
+    train_writer.add_summary( train_log , epoch_step.eval() )
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/summary/writer/writer.py", line 123, in add_summary
+    for value in summary.value:
+AttributeError: 'NoneType' object has no attribute 'value'
+EDSR------------------------------------
+EDSR------------------------------------
+2017-12-26 16:43:38.998411: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:83:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:43:39.551414: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:84:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:43:39.556950: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2017-12-26 16:43:39.557029: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 
+2017-12-26 16:43:39.557053: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y Y 
+2017-12-26 16:43:39.557066: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   Y Y 
+2017-12-26 16:43:39.557088: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2017-12-26 16:43:39.557105: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0, compute capability: 6.1)
+2017-12-26 16:43:44.395842: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.396009: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.396072: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.396196: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.396255: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.396301: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.396344: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.396387: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.396427: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397146: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397268: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397321: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397367: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397412: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397456: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397501: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397563: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397611: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397659: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397704: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397747: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397790: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397833: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397878: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397923: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.397967: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398011: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398054: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398097: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398150: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398197: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398241: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398285: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398328: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398371: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398415: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398458: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398503: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398547: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398593: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398657: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398711: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398766: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398814: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398859: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398901: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398943: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.398987: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399029: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399072: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399115: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399159: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399202: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399245: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399287: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399339: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399385: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399429: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399473: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399518: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399563: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399606: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399650: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399694: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399739: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399783: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399826: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399869: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399912: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.399965: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.400012: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.400055: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.400100: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.400143: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.400186: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:43:44.400231: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+Traceback (most recent call last):
+  File "../src/train.py", line 186, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 183, in main
+    build_and_train(args)
+  File "../src/train.py", line 142, in build_and_train
+    validate()
+  File "../src/train.py", line 133, in validate
+    label_ , val_log = sess.run([ label ,  merged_summary] ,feed_dict = { handle:val_handle })
+NameError: name 'label' is not defined
+EDSR------------------------------------
+EDSR------------------------------------
+2017-12-26 16:45:08.528441: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.582
+pciBusID: 0000:83:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:45:09.235924: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 1 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.62
+pciBusID: 0000:84:00.0
+totalMemory: 10.91GiB freeMemory: 6.45GiB
+2017-12-26 16:45:09.240488: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1045] Device peer to peer matrix
+2017-12-26 16:45:09.240567: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1051] DMA: 0 1 
+2017-12-26 16:45:09.240591: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 0:   Y Y 
+2017-12-26 16:45:09.240603: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1061] 1:   Y Y 
+2017-12-26 16:45:09.240624: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:83:00.0, compute capability: 6.1)
+2017-12-26 16:45:09.240659: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:1) -> (device: 1, name: GeForce GTX 1080 Ti, pci bus id: 0000:84:00.0, compute capability: 6.1)
+2017-12-26 16:45:14.067153: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067311: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067368: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067418: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067464: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067507: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067549: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067591: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067633: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067675: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067716: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067758: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067820: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067864: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067904: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067946: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.067987: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068027: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068066: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068106: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068146: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068186: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068225: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068264: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068304: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068344: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068394: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068436: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068477: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068517: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068555: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068595: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068634: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068675: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068715: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068754: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068793: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068832: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068873: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068926: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.068969: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069010: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069049: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069088: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069128: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069166: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069207: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069247: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069286: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069325: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069363: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069403: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069452: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069494: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069535: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069575: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069615: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069655: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069694: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069734: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069773: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069814: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069853: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069893: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069932: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.069980: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.070022: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.070061: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.070100: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.070139: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.070178: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.070218: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.070257: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.070296: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: End of sequence
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.227916: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+2017-12-26 16:45:14.228241: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228327: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228375: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228416: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228476: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228516: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228554: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228592: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228628: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228666: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228703: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228740: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228777: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228813: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228849: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228894: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228933: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.228971: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229008: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229045: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229082: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229134: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229195: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229240: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229278: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229316: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229352: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229396: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229434: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229470: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229507: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229542: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229578: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229614: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229650: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229686: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229722: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229758: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229794: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229837: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229875: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229910: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229946: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.229982: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230019: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230055: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230091: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230126: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230162: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230198: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230234: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230278: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230316: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230352: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230389: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230426: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230462: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230497: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230533: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230573: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230610: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230667: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230710: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230756: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230795: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230832: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230868: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230903: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230940: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.230975: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.231011: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+2017-12-26 16:45:14.231050: W tensorflow/core/framework/op_kernel.cc:1192] Out of range: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+Traceback (most recent call last):
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1323, in _do_call
+    return fn(*args)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1302, in _run_fn
+    status, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/errors_impl.py", line 473, in __exit__
+    c_api.TF_GetCode(self.status.status))
+tensorflow.python.framework.errors_impl.OutOfRangeError: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+	 [[Node: EDSR/Block0/Conv_1/weights/read/_409 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:1", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_107_EDSR/Block0/Conv_1/weights/read", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:1"]()]]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "../src/train.py", line 187, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 184, in main
+    build_and_train(args)
+  File "../src/train.py", line 142, in build_and_train
+    validate()
+  File "../src/train.py", line 133, in validate
+    val_log = sess.run( merged_summary ,feed_dict = { handle:val_handle })
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 889, in run
+    run_metadata_ptr)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1120, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1317, in _do_run
+    options, run_metadata)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/client/session.py", line 1336, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.OutOfRangeError: Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+	 [[Node: EDSR/Block0/Conv_1/weights/read/_409 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:1", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_107_EDSR/Block0/Conv_1/weights/read", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:1"]()]]
+
+Caused by op 'IteratorGetNext', defined at:
+  File "../src/train.py", line 187, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 184, in main
+    build_and_train(args)
+  File "../src/train.py", line 63, in build_and_train
+    I_LR , I_HR = iterator.get_next()
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/data/ops/iterator_ops.py", line 259, in get_next
+    name=name))
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/ops/gen_dataset_ops.py", line 706, in iterator_get_next
+    output_shapes=output_shapes, name=name)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 2956, in create_op
+    op_def=op_def)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/framework/ops.py", line 1470, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+OutOfRangeError (see above for traceback): Attempted to repeat an empty dataset infinitely.
+	 [[Node: IteratorGetNext = IteratorGetNext[output_shapes=[[?,28,24,3], [?,112,96,3]], output_types=[DT_FLOAT, DT_FLOAT], _device="/job:localhost/replica:0/task:0/device:CPU:0"](IteratorFromStringHandle)]]
+	 [[Node: EDSR/Block0/Conv_1/weights/read/_409 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:1", send_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device_incarnation=1, tensor_name="edge_107_EDSR/Block0/Conv_1/weights/read", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:1"]()]]
+
+Traceback (most recent call last):
+  File "../src/train.py", line 187, in <module>
+    tf.app.run(main)
+  File "/home/wtw/anaconda3/lib/python3.6/site-packages/tensorflow/python/platform/app.py", line 48, in run
+    _sys.exit(main(_sys.argv[:1] + flags_passthrough))
+  File "../src/train.py", line 180, in main
+    args = parse_args()
+  File "../src/train.py", line 174, in parse_args
+    args.name = "EDSR__dataset_%s__dim%d__n_blocks%d__%s__scale%d__epoch%d__lr%e__dr%f"%(args.train_input.split("/")[-1].split(".")[-2] , args.dim , args.n_blocks , args.upsample_method , args.scale , args.n_epochs , args.learning_rate , args.decay_rate )
+IndexError: list index out of range

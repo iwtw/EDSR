@@ -14,7 +14,7 @@ def block( inputs , kernel_size , stride , activation_fn = None , regularization
         outputs = inputs + scaling_factor * outputs
     return outputs
 
-def edsr( inputs , scale  ,  dim = 256 , block_length = 32  , upsample_method = "subpixel" ,  regularization_scale = 0.0 , reuse = None ):
+def edsr( inputs , scale  ,  dim = 256 , n_blocks = 32  , upsample_method = "subpixel" ,  regularization_scale = 0.0 , reuse = None ):
     "EDSR model"
     "inputs : tensor of format 'NHWC' "
     "returns : tensor I^SR "
@@ -22,7 +22,7 @@ def edsr( inputs , scale  ,  dim = 256 , block_length = 32  , upsample_method = 
     with tf.variable_scope("EDSR" , reuse = reuse ) :
         conv1 = utils.conv2d( inputs , dim , 3 , 1 , regularization_scale = regularization_scale  )
         outputs = conv1
-        for i in range(block_length):
+        for i in range(n_blocks):
             outputs = block( outputs , 3 , 1 , tf.nn.relu , regularization_scale= regularization_scale , scope = "Block{}".format(i) )
         outputs = utils.conv2d( outputs , dim , 3 , 1 , regularization_scale = regularization_scale  )
         outputs += conv1
