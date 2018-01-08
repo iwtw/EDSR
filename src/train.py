@@ -149,9 +149,14 @@ def build_and_train( args ):
                 val_writer.add_summary( val_log ,global_step.eval() )
                 val_writer.flush()
                 saver.save( sess , args.model_dir+"/model" )
-                i_lr , i_sr , i_hr = sess.run( [ i_LR , I_SR , I_HR ] , feed_dict = "val_handle")
-                i_bi = skimage.transform.resize( i_lr , (args.height , args.width) )
-                save_images.save_training_images("../training_output/"+args.name,[i_hr,i_bi,i_sr], epoch )
+                i_lr , i_sr , i_hr = sess.run( [ I_LR , I_SR , I_HR ] , feed_dict = { handle : val_handle } )
+                def resize_images( i_lr  ):
+                    i_bi = []
+                    for i in range( len(i_lr)):
+                        i_bi.append( skimage.transform.resize( i_lr[i] , (args.height , args.width) ) )
+                    return i_bi
+                i_bi = resize_images( i_lr )
+                save_images.save_training_images([i_hr,i_bi,i_sr], epoch_step.eval(), "../training_output/"+args.name )
 
             #validate at each epoch end
             validate()
