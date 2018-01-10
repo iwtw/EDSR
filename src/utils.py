@@ -1,85 +1,57 @@
-import tensorflow as tf
 import numpy as np
-import time as time
-import tensorflow.contrib.layers as layers
+import tensorflow as tf
 
-def conv2d( inputs , outputs_dim , kernel_size ,   stride ,   padding = "SAME" , he_init = False , activation_fn = None , regularization_scale = 0.0  ): 
-    C = inputs.get_shape()[-1].value
-    fan_in = C * kernel_size**2
-    fan_out = C * kernel_size**2 / stride**2
-    avg_fan = (fan_in + fan_out) / 2
-    if he_init:
-        var = 2.0/avg_fan
-    else :
-        var = 1.0/avg_fan
-    # var = (b - a)**2 / 12 , b==-a ,  (zero mean)
-    upper_bound = np.sqrt( 12.0*var ) * 0.5 
-    weights_initializer = tf.random_uniform_initializer( -upper_bound , upper_bound , seed = None , dtype = tf.float32 )
-    weights_regularizer = layers.l2_regularizer( scale = regularization_scale )
-    return layers.conv2d( inputs = inputs , num_outputs = outputs_dim , kernel_size = kernel_size , stride =  stride, padding = "SAME"  , activation_fn = activation_fn , weights_initializer = weights_initializer   , weights_regularizer = weights_regularizer )
+    
 
-def fully_connected( inputs , outputs_dim ,  he_init = False , activation_fn = None , regularization_scale = 0.0   ):
-    x = layers.flatten( inputs )
-    fan_in = x.get_shape()[-1].value
-    fan_out = ( C + outputsdim ) / 2
-    avg_fan = ( fan_in + fan_out ) / 2 
-    if he_init:
-        var = 2.0/avg_fan
-    else:
-        var = 1.0/avg_fan
-    # var = (b - a)**2 / 12 , b==-a ,  (zero mean)
-    upper_bound = np.sqrt( 12.0 * var ) *0.5
-    weights_initializer = tf.random_uniform_initializer( -upper_bound , upper_bound , seed = None , dtype = tf.float32 )
-    weights_regularizer = layers.l2_regularizer( scale = regularization_scale )
-    return layers.fully_connected( x , outputs_dim , weights_initializer =  weights_initializer , activation_fn = activation_fn   ,   weights_regularizer = weights_regularizer )
+def preprocess(images , dataset_mean):
+    images -= np.reshape( dataset_mean , (1,1,1,3) )
+    return images
+def deprocess(images , dataset_mean):
+    images += np.reshape( dataset_mean , (1,1,1,3))
+    return images
 
-def conv2d_transpose( inputs , outputs_dim , kernel_size , stride , padding = "SAME" , he_init = False , activation_fn = None , regularization_scale = 0.0   ):
-    C = inputs.get_shape()[-1].value
-    fan_in = C * kernel_size**2 / stride**2
-    fan_out = C * kernel_size**2 
-    avg_fan = ( fan_in + fan_out ) / 2 
-    if he_init:
-        var = 2.0/avg_fan
-    else :
-        var = 1.0/avg_fan
-    # var = ( b - a )**2 /12 , b==-a , (zero mean)
-    upper_bound = np.sqrt( 12.0 * var ) *0.5
-    weights_initializer = tf.random_uniform_initializer( -upper_bound , upper_bound , seed = None , dtype = tf.float32 )
-    weights_regularizer = layers.l2_regularizer( scale = regularization_scale )
-    return layers.conv2d_transpose( inputs , outputs_dim , kernel_size = kernel_size , stride = stride , padding = padding ,  weights_initializer = weights_initializer ,  activation_fn = activation_fn , weights_regularizer = weights_regularizer )
+def augment_image( image, flip_flag ,rotate_radian )  :
+    image = tf.cond( flip_flag,
+        lambda:tf.image.random_flip_left_right( image ) ,
+        lambda:image
+        )
+    image = tf.contrib.image.rotate( image , rotate_radian , interpolation ="BILINEAR")
+    return image
 
+def decode_image( image_string  ):
+    image = tf.image.decode_image( image_string , 3 )
+    image.set_shape([None , None , 3])
+    image = tf.cast( image, tf.float32  )
+    return image
+def parse_function_for_train(args ):
+    def parser(example_proto):
+        feature = {
+                    "image_LR" : tf.FixedLenFeature( () , tf.string) ,
+                    "image_HR" : tf.FixedLenFeature( () , tf.string) 
+                }
+        parsed_feature = tf.parse_single_example( example_proto , feature )
+        image_LR_string = parsed_feature["image_LR"]
+        image_HR_string = parsed_feature["image_HR"]
 
-def upsample( inputs , scale , dim    , upsample_method = "subpixel" ,  activation_fn = None , regularization_scale = 0.0 ):
-    "upsample layer"
-    act = activation_fn
-    if act == None:
-        act = tf.identity
-    #with tf.variable_scope(scope) as scope :
-    if upsample_method == "subpixel":
-        if scale == 2 :
-            outputs = conv2d(  inputs ,  dim * 2**2, 3 , 1 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn ,  regularization_scale = regularization_scale ) 
-            outputs = tf.depth_to_space( outputs , 2 )
-            outputs = act( outputs )
-        elif scale == 3 :
-            outputs = conv2d( inputs , dim * 3**2 , 3 , 1 ,  he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale  )
-            outputs = tf.depth_to_space( outputs , 3 )
-            outputs = act( outputs )
-        elif scale == 4 :
-            outputs = conv2d(  inputs ,  dim * 2**2, 3 , 1 , regularization_scale = regularization_scale  ) 
-            outputs = tf.depth_to_space( outputs , 2 )
-            outputs = conv2d(  outputs ,  dim * 2**2 , 3 , 1 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale   ) 
-            outputs = tf.depth_to_space( outputs , 2 )
-            outputs = act( outputs )
-    elif upsample_method == "conv_transpose":
-        if scale == 2 :
-            outputs = utils.conv2d_transpose( inputs , dim , 3 , 2 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale   )
-            outputs = act( outputs )
-        elif scale == 3:
-            outputs = utils.conv2d_transpose( inputs , dim , 3 , 3 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale   )
-            outputs = act( outputs )
-        elif scale == 4:
-            outputs = utils.conv2d_transpose( inputs , dim , 3 , 2 , regularization_scale = regularization_scale )  
-            outputs = utils.conv2d_transpose( outputs , dim , 3 , 2 , he_init = (activation_fn == tf.nn.relu ) , activation_fn = activation_fn , regularization_scale = regularization_scale  )
-            outputs = act( outputs )
-                
-    return outputs
+        image_LR = decode_image( image_LR_string )
+        image_HR = decode_image( image_HR_string )
+        #50% percent to flip the pair of images
+        flip_flag = False
+        if args.flip:
+            flip_flag = tf.greater( tf.random_uniform( (1,1), 0,1 )[0,0] , 0.5)
+        #random rotate 0,90,180,270 degree
+        if args.rotate:
+            rotate_radian =  tf.floor( tf.random_uniform( (1,1), 0,4 )[0,0]  )*90*np.pi/180
+        else:
+            rotate_radian = 0
+        image_LR = augment_image( image_LR , flip_flag , rotate_radian )
+        image_HR = augment_image( image_HR , flip_flag , rotate_radian )
+        return image_LR , image_HR
+    return parser
+
+def parse_function_for_test(args  ):
+    def parser( filename):
+        image_string = tf.read_file( filename)
+        image = decode_image( image_string  )
+        return image
+    return parser 

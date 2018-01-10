@@ -10,36 +10,20 @@ import skimage.transform
 import skimage.io
 import json
 import time
+from utils import *
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # or any {'0', '1', '2'}
 
 
+#load the mean of dataset
+with open( "mean.json" , "r" ) as json_file:
+    dataset_mean_dict = json.load(  json_file )
+dataset_mean = []
+dataset_mean.append( float( dataset_mean_dict.get( "R" )))
+dataset_mean.append( float( dataset_mean_dict.get( "G" )))
+dataset_mean.append( float( dataset_mean_dict.get( "B" )))
+dataset_mean = np.array( dataset_mean )
 
-def preprocess_for_train( image_string , height ,width )  :
-    image = tf.image.decode_image( image_string , 3 )
-    image.set_shape([height , width , 3])
-    image = tf.cast( image, tf.float32  )
-    image = 1.0/127.5 * image- 1.0 
-    return image
 
-def preprocess_for_hr_image( image_string , height , width ):
-    image = tf.image.decode_image( image_string , 3 )
-    image.set_shape([height , width , 3])
-    image = tf.cast( image, tf.float32  )
-    image = 1.0/127.5 * image- 1.0 
-    return image
-def _parse_function( args ):
-    def parser(example_proto):
-        feature = {
-                    "image_LR" : tf.FixedLenFeature( () , tf.string) ,
-                    "image_HR" : tf.FixedLenFeature( () , tf.string) 
-                }
-        parsed_feature = tf.parse_single_example( example_proto , feature )
-        image_LR_string = parsed_feature["image_LR"]
-        image_HR_string = parsed_feature["image_HR"]
-
-        image_LR = preprocess_for_train( image_LR_string , args.height/args.scale , args.width/args.scale )
-        image_HR = preprocess_for_hr_image( image_HR_string , args.height , args.width )
-        return image_LR , image_HR
-    return parser
 
 def _filter_function(n_gpus):
     def f(x,y):
@@ -47,12 +31,10 @@ def _filter_function(n_gpus):
         b = tf.equal( tf.mod( tf.shape(y)[0] , n_gpus ) , 0 )  
         return tf.logical_and(a,b)
     return f
-
-
 def build_and_train( args ):
     def build_dataset(filenames):
         dataset = ( tf.data.TFRecordDataset( filenames )
-            .map( _parse_function(args) , num_parallel_calls = 8 )
+            .map( parse_function_for_train(args) , num_parallel_calls = 8 )
             .shuffle( buffer_size = 10000 )
             .batch( args.batch_size   )
             .filter(  _filter_function(args.n_gpus))
@@ -84,21 +66,29 @@ def build_and_train( args ):
                 reuse = None
             else:
                 reuse = True
+            I_LR_i = preprocess( I_LR_i , dataset_mean )
             I_SR_i = edsr.edsr( I_LR_i , args.scale, dim = args.dim , n_blocks = args.n_blocks ,  reuse = reuse )
-            loss_i = tf.losses.absolute_difference( I_SR_i , I_HR_i ) 
-
-            losses.append(loss_i)
+            I_SR_i = deprocess( I_SR_i , dataset_mean )
             I_SR_list.append(I_SR_i)
     
     I_SR = tf.concat(I_SR_list , axis = 0 )
+    #L1 reconstruct loss
+    loss = 1.0/args.batch_size *tf.reduce_sum( tf.abs( I_HR - I_SR )  )
 
-    loss = tf.add_n( losses ) / args.batch_size
+    def PSNR( a , b , MAX):
+        mse = tf.losses.mean_squared_error ( a , b )
+        return 10.0 * tf.log( MAX **2 / mse)/tf.log(10.0)
+    psnr = PSNR( I_SR , I_HR , 255.0 )
+    tf.summary.scalar("PSNR" , psnr )
     tf.summary.scalar("loss",loss)
     
+
     #####train
 
     epoch_step = tf.Variable( 0 , trainable = False )
     epoch_step_inc = tf.assign_add( epoch_step , 1 )
+    tf.summary.scalar("epoch",epoch_step)
+
     global_step = tf.Variable( 0 , trainable = False )
     learning_rate = tf.train.exponential_decay( args.learning_rate , global_step = epoch_step , decay_steps  = 1  , decay_rate = args.decay_rate )
     train_op = tf.train.AdamOptimizer( learning_rate = learning_rate ).minimize( loss , var_list = tf.get_collection( tf.GraphKeys.TRAINABLE_VARIABLES ) , global_step = global_step)
@@ -117,8 +107,6 @@ def build_and_train( args ):
             sess.run( tf.global_variables_initializer() )
 
 
-        it = global_step.eval
-
         merged_summary = tf.summary.merge_all()
         train_writer = tf.summary.FileWriter("../log/{}/train".format( args.name ),sess.graph)
         val_writer = tf.summary.FileWriter("../log/{}/val".format( args.name)  , sess.graph )
@@ -135,7 +123,7 @@ def build_and_train( args ):
                     sess.run(train_op, feed_dict ={ handle:train_handle })
                     if global_step.eval() % args.log_step == 0 :
                         temp_time = time.time()
-                        print("     epoch %d it %e , %.1f iters/s"%(epoch_step.eval(),global_step,args.log_step/(temp_time-prev_time)))
+                        print("     epoch %d it %.0e , %.1f iters/s"%(epoch_step.eval(),global_step.eval(),args.log_step/(temp_time-prev_time)))
                         prev_time = temp_time
                         train_log = sess.run( merged_summary , feed_dict ={handle:train_handle })
                         train_writer.add_summary( train_log , global_step.eval() )
@@ -150,12 +138,17 @@ def build_and_train( args ):
                 val_writer.flush()
                 saver.save( sess , args.model_dir+"/model" )
                 i_lr , i_sr , i_hr = sess.run( [ I_LR , I_SR , I_HR ] , feed_dict = { handle : val_handle } )
+                i_sr = np.clip( i_sr , 0 , 255 )
+                i_sr = np.round(i_sr).astype(np.uint8)
+                i_hr = np.round(i_hr).astype(np.uint8)
                 def resize_images( i_lr  ):
                     i_bi = []
                     for i in range( len(i_lr)):
-                        i_bi.append( skimage.transform.resize( i_lr[i] , (args.height , args.width) ) )
-                    return i_bi
+                        #bicubic
+                        i_bi.append( skimage.transform.resize( i_lr[i] , (args.height , args.width) , order = 3 , clip = True , preserve_range = True )  )
+                    return np.array(i_bi,dtype = np.uint8)
                 i_bi = resize_images( i_lr )
+
                 save_images.save_training_images([i_hr,i_bi,i_sr], epoch_step.eval(), "../training_output/"+args.name )
 
             #validate at each epoch end
@@ -177,7 +170,7 @@ def parse_args():
     parser.add_argument('-train_input',help='train tfrecord filename')
     parser.add_argument('-val_input',help='val tfrecord filename')
     parser.add_argument('-n_gpus',type=int)
-    parser.add_argument('--log_step',type=int,default=10000)
+    parser.add_argument('--log_step',type=int,default=100)
     parser.add_argument('--batch_size',type=int,default=64)
     parser.add_argument('--height',type=int,default=112)
     parser.add_argument('--width',type=int , default=96)
@@ -188,9 +181,11 @@ def parse_args():
     parser.add_argument('--learning_rate',type=float,default=1e-3)
     parser.add_argument('--decay_rate',type=float,default=0.5)
     parser.add_argument('--n_epochs',type=int,default=20)
+    parser.add_argument('--flip',type=bool,default=True)
+    parser.add_argument('--rotate',type=bool,default=True)
     args = parser.parse_args()
 
-    args.name = "EDSR__dataset_%s__dim%d__n_blocks%d__%s__scale%d__epoch%d__lr%e__dr%f"%(args.train_input.split("/")[-1].split(".")[-2] , args.dim , args.n_blocks , args.upsample_method , args.scale , args.n_epochs , args.learning_rate , args.decay_rate )
+    args.name = "EDSR__dataset_%s__dim%d__n_blocks%d__%s__scale%d__epoch%d__lr%.0e__dr%.1f__rotate%d__flip%d"%(args.train_input.split("/")[-1].split(".")[-2] , args.dim , args.n_blocks , args.upsample_method , args.scale , args.n_epochs , args.learning_rate , args.decay_rate , args.rotate , args.flip )
     args.model_dir = "../model/"+args.name   
     return args
 

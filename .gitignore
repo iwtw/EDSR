@@ -4,3 +4,6 @@ model/
 training_output/
 *.jpg
 *.png
+*.json
+nohup.out
+
